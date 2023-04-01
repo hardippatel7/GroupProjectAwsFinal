@@ -1,7 +1,7 @@
 ﻿@model AdminBooksPanel.Models.Books
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Save";
 }
 
 <h1>Add a new</h1>
@@ -19,7 +19,7 @@
         }
         else
         {
-            @using (Html.BeginForm("Create",
+            @using (Html.BeginForm("Save",
                             "Books",
                             FormMethod.Post,
                             new { enctype = "multipart/form-data" }))
