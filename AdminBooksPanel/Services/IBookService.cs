@@ -9,6 +9,6 @@ namespace AdminBooksPanel.Services
         Task<Books> Save(Books book);
         Task<Books> GetById(string bookId);
         Task<IEnumerable<Books>> GetAll();
-        Task Delete(string bookId);
+        void Delete(Books book);
     }
 }

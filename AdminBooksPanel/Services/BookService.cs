@@ -32,9 +32,8 @@ namespace AdminBooksPanel.Services
             return await _bookRepository.GetAll();
         }
 
-        public async Task Delete(string bookId)
+        public void Delete(Books book)
         {
-            Books book = await _bookRepository.GetById(bookId);
             _bookRepository.Delete(book);
         }
 
