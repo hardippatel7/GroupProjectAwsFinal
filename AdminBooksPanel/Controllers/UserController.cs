@@ -10,15 +10,18 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using AdminBooksPanel.Services;
 
 namespace AdminBooksPanel.Controllers
 {
     public class UserController : Controller
     {
         private readonly IDynamoDBContext _context;
-        public UserController(IDynamoDBContext context)
+        private readonly IUserService _userService;
+        public UserController(IDynamoDBContext context, IUserService userService)
         {
             _context = context;
+            _userService = userService;
         }
         [HttpGet]
         public IActionResult Login()
@@ -34,7 +37,9 @@ namespace AdminBooksPanel.Controllers
                 return NotFound();
             }
             Debug.WriteLine(user.userName, user.password);
-            var userData = await _context.LoadAsync<User>(user.userName);
+            //var userData = await _context.LoadAsync<User>(user.userName);
+            var result = _userService.FindByUsername(user.userName);
+            var userData = result.Result;
 
             if (userData == null)
             {
@@ -68,7 +73,8 @@ namespace AdminBooksPanel.Controllers
         public async Task<IActionResult> RegistrationVerify(User user)
         {
             user.isAdmin = false;
-            await _context.SaveAsync(user);
+            //await _context.SaveAsync(user);
+            await _userService.Create(user);
             return View("Login");
         }
     }
