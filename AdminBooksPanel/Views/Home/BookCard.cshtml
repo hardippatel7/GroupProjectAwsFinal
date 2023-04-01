@@ -1,0 +1,9 @@
+﻿@model AdminBooksPanel.Models.Books
+
+
+<div class="card customCard" >
+    <img class="card-img-top" src="@Model.thumbnail" alt="Card image cap" onclick="location.href='@Url.Action("CDetail", "Books", new { id=@Model.bookId })'">
+    <div class="card-body">
+        <h5 class="card-title">@Model.bookName</h5>
+    </div>
+</div>

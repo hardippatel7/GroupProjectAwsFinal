@@ -1,0 +1,76 @@
+﻿@model AdminBooksPanel.Models.Books
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Add a new</h1>
+
+<h4>Book</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @if (!string.IsNullOrEmpty(ViewBag.successmsg))
+        {
+
+            <div class="alert alert-success" role="alert">
+                @ViewBag.successmsg
+            </div>
+        }
+        else
+        {
+            @using (Html.BeginForm("Create",
+                            "Books",
+                            FormMethod.Post,
+                            new { enctype = "multipart/form-data" }))
+            {
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label for="file" class="control-label">Upload Book Thumbnail</label>
+                    <input type="file" for="file" id="file" name="file" required class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="bookId" class="control-label"></label>
+                    <input asp-for="bookId" readonly class="form-control" value="@ViewBag.bookId" />
+                    <span asp-validation-for="bookId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="bookName" class="control-label"></label>
+                    <input asp-for="bookName" required class="form-control" />
+                    <span asp-validation-for="bookName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="bookAuthor" class="control-label"></label>
+                    <input asp-for="bookAuthor" required class="form-control" />
+                    <span asp-validation-for="bookAuthor" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="bookGenre" class="control-label"></label>
+                    <input asp-for="bookGenre" required class="form-control" />
+                    <span asp-validation-for="bookGenre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" required class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="publishDate" class="control-label"></label>
+                    <input asp-for="publishDate" required class="form-control" />
+                    <span asp-validation-for="publishDate" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+                }
+            }
+        </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

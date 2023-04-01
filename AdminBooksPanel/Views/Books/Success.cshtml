@@ -1,0 +1,14 @@
+﻿@model AdminBooksPanel.Models.Books
+
+@{
+}
+<div class="alert alert-success">
+    <strong>Success!</strong> Your purchase was successful!!
+</div>
+<div class="card">
+    <img class="card-img-top" src="@Model.thumbnail" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">@Model.bookName</h5>
+    </div>
+</div>
+<a asp-action="Books">Back to Books</a>

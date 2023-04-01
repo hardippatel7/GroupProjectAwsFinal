@@ -1,0 +1,14 @@
+﻿@model AdminBooksPanel.Models.Books
+
+
+<div class="card">
+    <img class="card-img-top" src="@Model.thumbnail" alt="Card image cap" onclick="location.href='@Url.Action("CDetail", "Books", new { id=@Model.bookId })'">
+    <div class="card-body">
+        <h5 class="card-title">@Model.bookName</h5>
+        <p class="card-text">$ @Model.Price</p>
+        <div>
+            <button class="btn btn-outline-success m-4" onclick="location.href='@Url.Action("Buy", "Books", new { id=@Model.bookId })'">Buy</button>
+            <button class="btn btn-outline-primary m-4" onclick="location.href='@Url.Action("CDetail", "Books", new { id=@Model.bookId })'">Details</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+﻿@model AdminBooksPanel.Models.Books
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Book (Id: @Html.DisplayFor(model => model.bookId))</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="bookId" class="control-label"></label>
+                <input asp-for="bookId" readonly class="form-control" />
+                <span asp-validation-for="bookId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="thumbnail" class="control-label"></label>
+                <input asp-for="thumbnail" class="form-control" />
+                <span asp-validation-for="thumbnail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="bookName" class="control-label"></label>
+                <input asp-for="bookName" class="form-control" />
+                <span asp-validation-for="bookName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="bookAuthor" class="control-label"></label>
+                <input asp-for="bookAuthor" class="form-control" />
+                <span asp-validation-for="bookAuthor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="bookGenre" class="control-label"></label>
+                <input asp-for="bookGenre" class="form-control" />
+                <span asp-validation-for="bookGenre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="publishDate" class="control-label"></label>
+                <input asp-for="publishDate" class="form-control" />
+                <span asp-validation-for="publishDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

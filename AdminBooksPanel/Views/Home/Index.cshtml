@@ -1,0 +1,14 @@
+﻿@model IEnumerable<AdminBooksPanel.Models.Books>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h3 class="display-4">Browse our Collection</h3>
+    <div class="card-deck">
+        @foreach (var item in Model)
+        {
+            @Html.Partial("BookCard", item);
+        }
+    </div>
+</div>
